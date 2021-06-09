@@ -11,22 +11,59 @@ package ca.sheridancollege.week3.softwarefundamentals.ice1;
  * for the match to the user's card. To be used as starting code in ICE 1
  * @author Sivagama 
  */
-public class CardTrick {
+import java.util.Scanner;
+/**
+ * A class that fills a magic hand of 7 cards with random Card Objects
+ * and then asks the user to pick a card and searches the array of cards
+ * for the match to the user's card. To be used as starting code in ICE 1
+ * @author Sivagama 
+ * @ modifier HarmanpreetSingh
+ * @ Student Number 991630987
+ */
+public class CardTrick 
+{
     
     public static void main(String[] args)
     {
-        Card[] magicHand = new Card[7];
-        
-        for (int i=0; i<magicHand.length; i++)
+        Card[] magicCard = new Card[7];
+        for(int i=0;i<magicCard.length;i++)
         {
             Card c = new Card();
-            //c.setValue(insert call to random number generator here)
-            //c.setSuit(Card.SUITS[insert call to random number between 0-3 here])
+            c.setValue((int)Math.floor(Math.random()*13+1)); //Random Number is created
+            c.setSuit(Card.SUITS[(int)(Math.random()*4)]);//call to random number from 0 and3
+            magicCard[i]=c;
+           
         }
-        
-        //insert code to ask the user for Card value and suit, create their card
-        // and search magicHand here
-        //Then report the result here
+        Scanner sc = new Scanner(System.in);//user input
+        Card RandomCard = new Card();
+        System.out.println("ENTER A CARD BETWEEN 1 TO 13");
+        int gValue = sc.nextInt();//enter number
+        RandomCard.setValue(gValue);
+        System.out.println("ENTER A SUIT :1(Hearts), 2(Diamonds),3(Spades),4(Clubs)");
+        int gSuits = sc.nextInt();//enter your suit choice
+        RandomCard.setSuit(Card.SUITS[gSuits-1]);
+     
+        boolean match = true;
+        for(int i= 0;i<magicCard.length;i++)
+        {
+        if(RandomCard.getValue() == magicCard[i].getValue()&&RandomCard.getSuit()
+                == magicCard[i].getSuit())
+        {
+        match = true;
+        break;
+        }
+        else
+        {
+        match = false;
+        }
+        }
+        if(match)
+        {
+        System.out.println("YOU ARE A WINNER");//if win this will be displayed
+        }
+        else
+        {
+        System.out.println("OPPS!YOU LOST");//if lose this will be displayed
+        }
     }
-    
-}
+    }   
