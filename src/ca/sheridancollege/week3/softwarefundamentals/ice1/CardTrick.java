@@ -35,18 +35,18 @@ public class CardTrick
            
         }
         Scanner sc = new Scanner(System.in);//user input
-        Card RandomCard = new Card();
+        Card luckyCard = new Card();
         System.out.println("ENTER A CARD BETWEEN 1 TO 13");
         int gValue = sc.nextInt();//enter number
-        RandomCard.setValue(gValue);
+        luckyCard.setValue(gValue);
         System.out.println("ENTER A SUIT :1(Hearts), 2(Diamonds),3(Spades),4(Clubs)");
         int gSuits = sc.nextInt();//enter your suit choice
-        RandomCard.setSuit(Card.SUITS[gSuits-1]);
+        luckyCard.setSuit(Card.SUITS[gSuits-1]);
      
         boolean match = true;
         for(int i= 0;i<magicCard.length;i++)
         {
-        if(RandomCard.getValue() == magicCard[i].getValue()&&RandomCard.getSuit()
+        if(luckyCard.getValue() == magicCard[i].getValue()&&luckyCard.getSuit()
                 == magicCard[i].getSuit())
         {
         match = true;
